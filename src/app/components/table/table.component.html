@@ -1,0 +1,64 @@
+<div class="w-full mt-24">
+    <h1 class="text-3xl font-semibold text-center mb-10">Danh sách sản phẩm</h1>
+    <a href="/admin/product/add">
+        <button
+            class="bg-green-900 p-3 active:translate-y-[2px] transition-all ease-in-out my-4 rounded-md text-white"
+        >
+            Thêm sản phẩm
+        </button>
+    </a>
+    <table class="w-full text-center border-2">
+        <thead class="w-1/4">
+            <tr>
+                <th
+                    *ngFor="let item of headerList.list"
+                    class="border-2 border-black"
+                >
+                    {{ item }}
+                </th>
+            </tr>
+        </thead>
+        <tbody class="w-full">
+            <ng-container>
+                <app-product-row
+                    aria-hidden="false"
+                    [productList]="bodyList"
+                ></app-product-row>
+            </ng-container>
+            <!-- {typeof products === 'object' &&
+            products?.map((product, index) => (
+              <tr key={product?._id} class='border-2 hover:bg-slate-500 hover:text-white'>
+                <td class='border-2'>{index + 1}</td>
+                <td class='border-2'>
+                  <img src={product?.img as string} class='w-10 h-10 object-cover' />
+                </td>
+                <td class='border-2 w-32'>{product?.name}</td>
+                <td class='border-2 w-16 relative'>
+                  {product?.des.slice(0, 10)}{' '}
+                  {product && product?.des.split('').length > 10 ? <span class='moreDes'>...</span> : ''}
+                  <span class='absolute w-80 more z-10 hidden h-60 bg-white text-black border-2 border-red-700 p-4 rounded-md '>
+                    {product?.des}
+                  </span>
+                </td>
+                <td class='border-2'>{product?.sale}</td>
+                <td class='border-2'>{product?.price}</td>
+                <td class='border-2'>
+                  {product && typeof product.category_id === 'object' && product?.category_id.name}
+                </td>
+                <td class='border-2 w-10'>{product?.createAt}</td>
+                <td class='border-2'>
+                  <button
+                    onClick={() => product?._id && handleDelete(product?._id)}
+                    class='btn-delete rounded-md bg-red-700 p-2 text-base text-white'
+                  >
+                    Xóa
+                  </button>{' '}
+                  <a href={`/admin/product/edit/${product?._id}`}>
+                    <button class='rounded-md bg-gray-700 p-2 text-base text-white'>Sửa</button>
+                  </a>
+                </td>
+              </tr>
+            ))} -->
+        </tbody>
+    </table>
+</div>

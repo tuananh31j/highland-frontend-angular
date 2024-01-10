@@ -1,0 +1,24 @@
+<tr
+    *ngFor="let item of productList; let i = index"
+    class="border-2 hover:bg-slate-500 hover:text-white"
+>
+    <td class="border-2">{{ i + 1 }}</td>
+
+    <td class="border-2">{{ item.name }}</td>
+    <td class="border-2">{{ item.des }}</td>
+    <td class="border-2">{{ item.price }}</td>
+    <td class="border-2">{{ item.category_id.name }}</td>
+    <td class="border-2">{{ item.createdAt }}</td>
+    <td class="border-2">
+        <button
+            class="btn-delete rounded-md bg-red-700 p-2 text-base text-white"
+        >
+            Xóa
+        </button>
+        <a href="">
+            <button class="rounded-md bg-gray-700 p-2 text-base text-white">
+                Sửa
+            </button>
+        </a>
+    </td>
+</tr>
