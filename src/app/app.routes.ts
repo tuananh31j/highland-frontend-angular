@@ -6,6 +6,7 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductListComponent } from './pages/admin/product/list/list.component';
+import { ProductDetailsComponent } from './pages/client/product-details/product-details.component';
 
 export const routes: Routes = [
     {
@@ -13,12 +14,21 @@ export const routes: Routes = [
         component: MainLayoutComponent,
         children: [
             {
+                path: '',
+                redirectTo: '/home',
+                pathMatch: 'full',
+            },
+            {
                 path: 'home',
                 component: HomeComponent,
             },
             {
                 path: 'contact',
                 component: HomeComponent,
+            },
+            {
+                path: 'product/:id',
+                component: ProductDetailsComponent,
             },
         ],
     },

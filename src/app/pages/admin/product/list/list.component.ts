@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TableComponent } from '~/app/components/table/table.component';
 import { ProductKey } from '~/app/constants';
 import { ProductService } from '~/app/service/product/product.service';
@@ -15,11 +15,11 @@ import { IProduct } from '~/app/types/product';
     styleUrl: './list.component.scss',
 })
 export class ProductListComponent implements OnInit {
-    proKey: any;
+    productHeader: { name: string; list: string[] };
     products: IProduct[];
 
     constructor(private productService: ProductService) {
-        this.proKey = ProductKey;
+        this.productHeader = ProductKey;
         this.products = [];
     }
 

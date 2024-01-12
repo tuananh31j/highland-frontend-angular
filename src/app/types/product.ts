@@ -11,11 +11,11 @@ type IProduct = {
         name: string;
         createdAt: string;
         updatedAt: string;
-        __v: 0;
+        __v: number;
     };
     createdAt: string;
     updatedAt: string;
-    __v: 0;
+    __v: number;
 };
 
 export { IProduct };
