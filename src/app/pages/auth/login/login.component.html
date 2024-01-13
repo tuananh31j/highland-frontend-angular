@@ -11,9 +11,9 @@
                     Đăng nhập
                 </h1>
             </div>
-            <form onSubmit="{handleSubmit(onSubmit)}">
+            <form [formGroup]="loginForm" (submit)="onSubmit()">
                 <div class="h-[110px] mb-6">
-                    <label htmlFor="email" class="w-full">
+                    <label for="email" class="w-full">
                         Địa chỉ email
                         <span class="text-red-700">*</span>
                     </label>
@@ -21,6 +21,7 @@
                         class="border-2 rounded-md my-3 emailInput p-4 w-full"
                         placeholder="Nhập địa chỉ email"
                         type="email"
+                        formControlName="name"
                     />
                     <p class="text-red-700"></p>
                 </div>
@@ -33,6 +34,7 @@
                         class="border-2 rounded-md my-3 passInput p-4 w-full"
                         placeholder="Nhập mật khẩu"
                         type="password"
+                        formControlName="pwd"
                     />
                     <p class="text-red-700"></p>
                 </div>
