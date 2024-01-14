@@ -11,7 +11,7 @@
                     Đăng nhập
                 </h1>
             </div>
-            <form [formGroup]="loginForm" (submit)="onSubmit()">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="h-[110px] mb-6">
                     <label for="email" class="w-full">
                         Địa chỉ email
@@ -21,9 +21,14 @@
                         class="border-2 rounded-md my-3 emailInput p-4 w-full"
                         placeholder="Nhập địa chỉ email"
                         type="email"
-                        formControlName="name"
+                        name="email"
+                        formControlName="email"
                     />
-                    <p class="text-red-700"></p>
+                    <app-show-validation
+                        *ngIf="submitted"
+                        [control]="loginFormControl['email']"
+                        key="Email"
+                    ></app-show-validation>
                 </div>
                 <div class="h-[110px] mb-6">
                     <label htmlFor="pass" class="w-full my-3">
@@ -33,10 +38,15 @@
                     <input
                         class="border-2 rounded-md my-3 passInput p-4 w-full"
                         placeholder="Nhập mật khẩu"
+                        name="pass"
                         type="password"
-                        formControlName="pwd"
+                        formControlName="password"
                     />
-                    <p class="text-red-700"></p>
+                    <app-show-validation
+                        *ngIf="submitted"
+                        [control]="loginFormControl['password']"
+                        key="Mật khẩu"
+                    ></app-show-validation>
                 </div>
                 <div class="flex flex-col gap-1 justify-center">
                     <button

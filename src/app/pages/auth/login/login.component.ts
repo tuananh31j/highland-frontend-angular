@@ -1,33 +1,54 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import {
     FormBuilder,
     FormGroup,
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
-import { bootstrapApplication } from '@angular/platform-browser';
+import { ShowValidationComponent } from '~/app/components/show-validation/show-validation.component';
+import { AuthService } from '~/app/service/auth/auth.service';
 
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [ReactiveFormsModule, CommonModule],
-    providers: [FormBuilder, FormGroup, Validators],
+    imports: [
+        ReactiveFormsModule,
+        CommonModule,
+        ShowValidationComponent,
+        HttpClientModule,
+    ],
+    providers: [AuthService],
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     loginForm: FormGroup;
+    submitted: boolean;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(
+        private formBuilder: FormBuilder,
+        private authService: AuthService
+    ) {
         this.loginForm = this.formBuilder.group({
-            email: ['', Validators.required],
-            pwd: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', Validators.required],
         });
+        this.submitted = false;
     }
-
+    get loginFormControl() {
+        return this.loginForm.controls;
+    }
+    ngOnInit(): void {
+        console.log(this.loginForm);
+    }
     onSubmit() {
-        if (!this.loginForm.valid) return console.log(this.loginForm.value);
+        this.submitted = true;
+        if (this.loginForm.valid) {
+            this.authService.login(this.loginForm.value).subscribe((data) => {
+                localStorage.setItem('token', data.accessToken);
+            });
+        }
     }
 }
-bootstrapApplication(LoginComponent);

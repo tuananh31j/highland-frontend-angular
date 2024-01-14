@@ -11,7 +11,7 @@
                     Đăng ký
                 </h1>
             </div>
-            <form onSubmit="{handleSubmit(onSubmit)}">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <div class="flex gap-5">
                     <div class="">
                         <div class="h-[110px] mb-6">
@@ -23,8 +23,13 @@
                                 class="userName border-2 rounded-md my-3 p-4 w-full"
                                 placeholder="Nhập họ tên"
                                 type="text"
+                                formControlName="name"
                             />
-                            <p class="text-red-700"></p>
+                            <app-show-validation
+                                *ngIf="submitted"
+                                [control]="registerFormControls['name']"
+                                key="Ho ten"
+                            ></app-show-validation>
                         </div>
                         <div class="h-[110px] mb-6">
                             <label htmlFor="email" class="w-full">
@@ -34,9 +39,14 @@
                             <input
                                 class="emailName border-2 rounded-md my-3 p-4 w-full"
                                 placeholder="Nhập địa chỉ email"
+                                formControlName="email"
                                 type="email"
                             />
-                            <p class="text-red-700"></p>
+                            <app-show-validation
+                                *ngIf="submitted"
+                                [control]="registerFormControls['email']"
+                                key="Email"
+                            ></app-show-validation>
                         </div>
                     </div>
                     <div class="">
@@ -50,8 +60,13 @@
                                 class="border-2 rounded-md my-3 p-4 w-full"
                                 placeholder="Nhập số điện thoại"
                                 type="text"
+                                formControlName="phone"
                             />
-                            <p class="text-red-700"></p>
+                            <app-show-validation
+                                *ngIf="submitted"
+                                [control]="registerFormControls['phone']"
+                                key="So dien thoai"
+                            ></app-show-validation>
                         </div>
                         <div class="h-[110px] mb-6">
                             <label htmlFor="pass" class="w-full my-3">
@@ -61,9 +76,14 @@
                             <input
                                 class="pass border-2 rounded-md my-3 p-4 w-full"
                                 placeholder="Nhập mật khẩu"
+                                formControlName="password"
                                 type="password"
                             />
-                            <p class="text-red-700"></p>
+                            <app-show-validation
+                                *ngIf="submitted"
+                                [control]="registerFormControls['password']"
+                                key="Mat khau"
+                            ></app-show-validation>
                         </div>
                     </div>
                 </div>

@@ -1,1 +1,13 @@
-<p>show-validation works!</p>
+<div *ngIf="control !== null">
+    <span *ngIf="control.touched || control.invalid">
+        <p
+            *ngIf="control.errors && control.errors.required"
+            class="text-red-700"
+        >
+            {{ key }} bắt buộc nhập!
+        </p>
+        <p *ngIf="control.errors && control.errors.email" class="text-red-700">
+            {{ key }} phải là email!
+        </p>
+    </span>
+</div>

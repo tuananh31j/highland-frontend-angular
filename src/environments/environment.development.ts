@@ -1,8 +1,9 @@
-const BaseApi = 'https://highland-coffee.onrender.com/api';
+// const API_CLOUD = 'https://highland-coffee.onrender.com/api';
+const API_LOCAL = 'http://localhost:3004/api';
 export const environment = {
     production: false,
-    product: `${BaseApi}/products`,
-    customer: `${BaseApi}/customers`,
-    auth: `${BaseApi}/auth`,
-    category: `${BaseApi}/categories`,
+    product: `${API_LOCAL}/products`,
+    customer: `${API_LOCAL}/customers`,
+    auth: `${API_LOCAL}/auth`,
+    category: `${API_LOCAL}/categories`,
 };
