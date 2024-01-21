@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '~/app/service/product/product.service';
-import { IProduct } from '~/app/types/product';
+import { IProduct } from '~/app/types/Product';
 
 @Component({
     selector: 'app-product-details',

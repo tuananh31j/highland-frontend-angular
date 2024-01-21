@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { ProductRowComponent } from '../product/row/row.component';
+import { ProductRowComponent } from '../../pages/admin/product/list/row/row.component';
 
 @Component({
     selector: 'app-table',

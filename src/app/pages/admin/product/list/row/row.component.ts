@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'app-product-row',
@@ -10,4 +10,13 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductRowComponent {
     @Input() productList: any;
+    @Output() handleDelete: EventEmitter<any>;
+
+    constructor() {
+        this.handleDelete = new EventEmitter<any>();
+    }
+
+    onSendDelete(id: string) {
+        this.handleDelete.emit(id);
+    }
 }

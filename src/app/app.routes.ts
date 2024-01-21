@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductListComponent } from './pages/admin/product/list/list.component';
 import { ProductDetailsComponent } from './pages/client/product-details/product-details.component';
+import { ProductEditComponent } from './pages/admin/product/edit/edit.component';
 
 export const routes: Routes = [
     {
@@ -35,7 +36,15 @@ export const routes: Routes = [
     {
         path: 'admin',
         component: AdminLayoutComponent,
-        children: [{ path: 'product', component: ProductListComponent }],
+        children: [
+            {
+                path: 'admin',
+                redirectTo: '/product',
+                pathMatch: 'full',
+            },
+            { path: 'product', component: ProductListComponent },
+            { path: 'product/edit', component: ProductEditComponent },
+        ],
     },
 
     {

@@ -1,4 +1,4 @@
-import { ICustomer } from './customer';
+import { ICustomer } from './Customer';
 
 type ILoginResponse = {
     user: ICustomer;
